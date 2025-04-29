@@ -1,5 +1,6 @@
-# 100DaysOfPython 
-Tracking progress of 100 days of coding in Python ![Python Logo](https://www.python.org/static/community_logos/python-logo.png)
+# 100DaysOfPython  
+![Python Logo](https://www.python.org/static/community_logos/python-logo.png)  
+Tracking progress of 100 days of coding in Python
 
 
 ## Udemy Course Reference
