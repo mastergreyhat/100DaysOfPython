@@ -1,5 +1,6 @@
-# 100DaysOfPython
-Tracking progress of 100 days of coding in Python
+# 100DaysOfPython 
+Tracking progress of 100 days of coding in Python ![Python Logo](https://www.python.org/static/community_logos/python-logo.png)
+
 
 ## Udemy Course Reference
 I am following the course ["100 Days of Code: The Complete Python Pro Bootcamp"](https://www.udemy.com/course/100-days-of-code) by Angela Yu.
