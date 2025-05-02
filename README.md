@@ -10,4 +10,5 @@ I am following the course ["100 Days of Code: The Complete Python Pro Bootcamp"]
 Day-1: [band_name_generator.py](day_1/band_name_generator.py)  
 Day-2: [tip_calculator.py](day_2/tip_calculator.py)  
 Day-3: [treasure_island.py](day_3/treasure_island.py)  
-Day-4: [rock_paper_scissor.py](day_4/rock_paper_scissor.py)
+Day-4: [rock_paper_scissor.py](day_4/rock_paper_scissor.py)  
+Day-5: [password_generator.py](day_5/password_generator.py)
