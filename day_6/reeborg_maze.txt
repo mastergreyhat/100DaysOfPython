@@ -1,0 +1,15 @@
+def turn_right():
+    turn_left()
+    turn_left()
+    turn_left()
+
+while not at_goal():
+    if right_is_clear():
+        turn_right()
+        move()
+    elif front_is_clear():
+        move()
+    else:
+        turn_left()
+
+#Here these is an edge case, where the robot gets in an infinite loop, This will be addressed on day 15.
