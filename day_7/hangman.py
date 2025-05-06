@@ -1,78 +1,30 @@
 import random
+from hangman_resources import words, logo, stages, lives
 
-hangman = [r"""
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========""", r"""
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========""", r"""
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========""", r"""
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========""", r"""
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========""", r"""
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========""", r"""
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-========="""]
+stages.reverse()
+print(logo)
 
-hangman.reverse()
-
-words = ["lion", "tiger", "camel"]
-lives = 6
 chosen_word = random.choice(words)
-print(chosen_word)
 
 placeholder = "_" * len(chosen_word)
-print(placeholder)
+print(f"Word to guess: {placeholder}")
 
 correct_letters = []
 display = placeholder
 
 while  display != chosen_word and lives != 0:
+    print(f"\n***************** {lives}/6 LIVES LEFT *****************")
     guess = input("\nGuess a letter: ").lower()
+
+    if guess in correct_letters:
+        print(f"You have already guessed the letter '{guess}'")
 
     if guess not in chosen_word:
         lives -= 1
-        print(hangman[lives])
-        print(f"{lives} lives remaining")
+        print(f"Guessed letter '{guess}' not in the word. You lose a life.")
+        print(stages[lives])
     else:
-        print(hangman[lives])
+        print(stages[lives])
 
     display = ""
     for ch in chosen_word:
@@ -86,10 +38,7 @@ while  display != chosen_word and lives != 0:
     print(display)
 
 if lives == 0:
-    print(f"The correct word was {chosen_word}")
-    print("You Lose... Game Over")
+    print(f"\nThe correct word was '{chosen_word}' \nGAME OVER")
     
 else:
-    print("\nCongrats you won the game")
-
-
+    print("\nCongrats you won the game!")
