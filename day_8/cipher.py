@@ -69,6 +69,7 @@ def caesar(original_text, shift_amount, encode_or_decode):
     
             if letter not in alphabets:
                 cipher_text += letter
+                continue
             # else:    
             #     if count > 0:
             #         shift_amount *= 1 # logic fix to not make (- * - = +) from the second execution for decrypt
