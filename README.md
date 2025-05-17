@@ -7,12 +7,13 @@ Tracking progress of 100 days of coding in Python
 I am following the course ["100 Days of Code: The Complete Python Pro Bootcamp"](https://www.udemy.com/course/100-days-of-code) by Angela Yu.
 
 ### Codes
-Day-1: [band_name_generator.py](day_1/band_name_generator.py)  
-Day-2: [tip_calculator.py](day_2/tip_calculator.py)  
-Day-3: [treasure_island.py](day_3/treasure_island.py)  
-Day-4: [rock_paper_scissor.py](day_4/rock_paper_scissor.py)  
-Day-5: [password_generator.py](day_5/password_generator.py)  
-Day-6: [reeborg_maze.py](day_6/reeborg_maze.txt)  
-Day-7: [hangman.py](day_7/hangman.py)  
-Day-8: [cipher.py](day_8/cipher.py)  
-Day-9: [silent_auction.py](day_9/silent_auction.py)  
+Day-01: [band_name_generator.py](day_01/band_name_generator.py)  
+Day-02: [tip_calculator.py](day_02/tip_calculator.py)  
+Day-03: [treasure_island.py](day_03/treasure_island.py)  
+Day-04: [rock_paper_scissor.py](day_04/rock_paper_scissor.py)  
+Day-05: [password_generator.py](day_05/password_generator.py)  
+Day-06: [reeborg_maze.py](day_06/reeborg_maze.txt)  
+Day-07: [hangman.py](day_07/hangman.py)  
+Day-08: [cipher.py](day_08/cipher.py)  
+Day-09: [silent_auction.py](day_09/silent_auction.py)  
+Day-10: [silent_auction.py](day_10/calculator.py)  
