@@ -1,4 +1,5 @@
 import os
+from art import logo
 
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -17,7 +18,8 @@ def calculator(num1, num2, operation):
         return num1 / num2
     else:
         return None
-
+    
+print(logo)
 while True:
     num1 = float(input("What's the first number?: "))
     while True:
