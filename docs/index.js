@@ -292,21 +292,20 @@ const logo = `mastergreyhat
 `;
 
 var inputValues = [];
-
 const inputPrompts = [];
-
 let lives = 6;
 let end_of_game = false;
 let chosen_word;
 let display = "";
+let guessed_letters = new Set();
 
-//Click Run
+// Click Run
 $(document).ready(function () {
   $("#run-button").click(function () {
     inputValues = [];
+    guessed_letters = new Set(); // Reset guessed letters
 
     chosen_word = word_list[Math.floor(Math.random() * word_list.length)];
-    word_length = chosen_word.length;
     end_of_game = false;
     lives = 6;
     display = "";
@@ -317,46 +316,43 @@ $(document).ready(function () {
     $("#Content").empty();
     NewLine(logo, false);
     NewLine("Word to guess: " + display, false);
-    // NewLine("Pssst, the solution is " + chosen_word + ".", false);
     NewLine("Guess a letter: ", true);
   });
 });
 
-//Enter button
+// Enter key handler
 $(document).on("keydown", function (e) {
   var x = event.which || event.keyCode;
-  if (x === 13 || x == 13) {
+  if (x === 13) {
     var consoleLine = $("#" + CurrentId + " input").val();
     inputValues.push({ id: CurrentId, val: consoleLine });
 
     const guess = consoleLine.toLowerCase().trim();
 
-    if (display.includes(guess)) {
+    if (guessed_letters.has(guess)) {
       NewLine("You've already guessed " + guess, false);
+      $(".console-carrot").remove();
+      NewLine("Guess a letter: ", true);
+      return;
     }
 
-    if (!chosen_word.includes(guess)) {
-      NewLine(
-        `You guessed ${guess}, that's not in the word. You lose a life.`,
-        false
-      );
+    guessed_letters.add(guess); // Add to guessed letters
 
+    if (!chosen_word.includes(guess)) {
+      NewLine(`You guessed ${guess}, that's not in the word. You lose a life.`, false);
       lives -= 1;
+
       if (lives <= 0) {
         end_of_game = true;
-        NewLine(
-          `***********************IT WAS ${chosen_word}! YOU LOSE**********************`,
-          false
-        );
+        NewLine(stages[lives], false);
+        NewLine(`***********************IT WAS ${chosen_word}! YOU LOSE**********************`, false);
         $(".console-carrot").remove();
         return;
       }
     } else {
-      for (index in chosen_word) {
-        const letter = chosen_word[index];
-        if (letter == guess) {
-          display = display.replaceAt(index, guess);
-          console.log(display + index);
+      for (let i = 0; i < chosen_word.length; i++) {
+        if (chosen_word[i] === guess) {
+          display = display.substring(0, i) + guess + display.substring(i + 1);
         }
       }
       NewLine(display, false);
@@ -369,17 +365,18 @@ $(document).on("keydown", function (e) {
       return;
     }
 
-    NewLine(stages[lives], false);
+    if (!end_of_game) {
+      NewLine(stages[lives], false);
+    }
 
     $(".console-carrot").remove();
-    NewLine(
-      `****************************${lives}/6 LIVES LEFT****************************`,
-      false
-    );
+    NewLine(`****************************${lives}/6 LIVES LEFT****************************`, false);
     NewLine("Word to guess: " + display, false);
     NewLine("Guess a letter: ", true);
   }
 });
+
+// Adjust input box size
 $(document).on("keydown", function (e) {
   var x = event.which || event.keyCode;
   var line = $("#" + CurrentId + " input");
@@ -393,11 +390,13 @@ $(document).on("keydown", function (e) {
     $("#" + CurrentId + " input").attr("size", "1");
   }
 });
+
+// Focus input on click
 $(document).on("click", function (e) {
   $("#" + CurrentId + " input").focus();
 });
 
-//New line
+// Create a new terminal line
 function NewLine(text, isPrompt) {
   $(".console-carrot").remove();
   if (CurrentId !== undefined) {
@@ -407,7 +406,6 @@ function NewLine(text, isPrompt) {
 
   if (isPrompt) {
     $("#Content").append(
-      //One Line
       '<div id="' +
         CurrentId +
         '">' +
@@ -427,17 +425,7 @@ function GenerateId() {
   return Math.random().toString(16).slice(2);
 }
 
-String.prototype.replaceAt = function (index, replacement) {
-  console.log(this.substring(3) + "hello  ");
-  let newString =
-    this.substring(0, index) +
-    replacement +
-    this.substring(Number(index) + replacement.length);
-
-  //  replacement + currentString.substring(index + replacement.length);
-  return newString;
-};
-
+// Optional utility
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
