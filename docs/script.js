@@ -57,22 +57,13 @@ const stages = [
          |
   =========`
 ];
+let chosenWord = words[Math.floor(Math.random() * words.length)];
+let display = Array(chosenWord.length).fill("_");
+let lives = 6;
+let guessedLetters = [];
 
-let chosenWord, display, lives, guessedLetters;
-
-function initializeGame() {
-  chosenWord = words[Math.floor(Math.random() * words.length)];
-  display = Array(chosenWord.length).fill("_");
-  lives = 6;
-  guessedLetters = [];
-
-  document.getElementById("lives").textContent = lives;
-  document.getElementById("word-display").textContent = display.join(" ");
-  document.getElementById("hangman-stage").textContent = stages[6];
-  document.getElementById("message").textContent = "";
-  document.getElementById("guess-input").disabled = false;
-  document.getElementById("guess-input").value = "";
-}
+document.getElementById("word-display").textContent = display.join(" ");
+document.getElementById("hangman-stage").textContent = stages[6];
 
 function makeGuess() {
   const input = document.getElementById("guess-input");
@@ -101,6 +92,7 @@ function makeGuess() {
   document.getElementById("lives").textContent = lives;
   document.getElementById("word-display").textContent = display.join(" ");
   document.getElementById("hangman-stage").textContent = stages[lives];
+
   input.value = "";
   document.getElementById("message").textContent = "";
 
@@ -116,10 +108,6 @@ function makeGuess() {
 
 function disableInput() {
   document.getElementById("guess-input").disabled = true;
-}
-
-function restartGame() {
-  initializeGame();
 }
 
 // Initialize the game when the page loads
