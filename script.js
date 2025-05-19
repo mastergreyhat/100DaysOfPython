@@ -1,4 +1,4 @@
-const word_list = [
+const words = [
   "abruptly",
   "absurd",
   "abyss",
