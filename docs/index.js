@@ -280,7 +280,7 @@ stages = [
 `,
 ];
 
-const logo = `
+const logo = `mastergreyhat
  _                                             
 | |                                            
 | |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  
