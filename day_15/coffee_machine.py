@@ -42,10 +42,14 @@ def is_resource_sufficient(order_ingredients):
 def process_coins():
     """Returns the total of coins inserted"""
     print("Please insert coins.")
-    total = int(input("How many quarters?: "))*0.25
-    total += int(input("How many dimes?: "))*0.1
-    total += int(input("How many nickles?: "))*0.05
-    total += int(input("How many pennies? "))*0.01
+    try:
+        total = int(input("How many quarters?: "))*0.25
+        total += int(input("How many dimes?: "))*0.1
+        total += int(input("How many nickles?: "))*0.05
+        total += int(input("How many pennies? "))*0.01
+    except ValueError:
+        print("Unable to process coins. Please Try again.")
+        process_coins()
     return total
 
 def transaction_status(payment, drink_cost):
@@ -63,9 +67,15 @@ def transaction_status(payment, drink_cost):
         return False
 
 def make_coffee(drink_name, order_ingredients):
+    """Updates the report with remaining ingredients"""
     for item in order_ingredients:
         resources[item] -= order_ingredients[item]
     print(f"Here is your {drink_name} ☕️. Enjoy!")
+
+# refill funcion (not requirement of the course)
+def refill(to_refill, quantity):
+    global resources
+    resources[to_refill] += quantity
 
 
 is_on = True
@@ -79,9 +89,23 @@ while is_on:
         print(f"Milk: {resources["milk"]}ml")
         print(f"Coffee: {resources["coffee"]}g")
         print(f"Money: ${profit}")
+
+# Adding code to refill items (not requirement of the course)
+    elif choice == "refill":
+        to_refill = input("What do you want to refill? (Water/Milk/Coffee): ").lower()
+        quantity = int(input("How much ml/g to refill?: "))
+        refill(to_refill, quantity)
     else:
-        drink = MENU[choice]
+        try:
+            drink = MENU[choice]
+        except KeyError:
+            print("Please Enter a valid item.")
+            continue
         if is_resource_sufficient(drink["ingredients"]):
             payment = process_coins()
             if transaction_status(payment, drink["cost"]):
                 make_coffee(choice, drink["ingredients"])
+
+# Basic Error handling is implemented (Further error handling on possible failure blocks should be implemented - not requirement of course)
+
+# In real life scenario, we will be only able to choose from 3 options in the coffee machine, so some of the error handling currently implemented in code might not be required. 
