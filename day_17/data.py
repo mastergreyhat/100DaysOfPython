@@ -1,0 +1,22 @@
+question_list = [
+    {"question": "The capital of France is Paris.", "answer": True},
+    {"question": "The Sun revolves around the Earth.", "answer": False},
+    {"question": "Water boils at 100 degrees Celsius.", "answer": True},
+    {"question": "Shakespeare wrote 'The Great Gatsby'.", "answer": False},
+    {"question": "There are seven continents on Earth.", "answer": True},
+    {"question": "Mars is known as the Red Planet.", "answer": True},
+    {"question": "The Mona Lisa was painted by Vincent van Gogh.", "answer": False},
+    {"question": "Blue whales are the largest mammals on Earth.", "answer": True},
+    {"question": "World War II ended in 1945.", "answer": True},
+    {"question": "The square root of 64 is 6.", "answer": False},
+    {"question": "Portuguese is the primary language spoken in Brazil.", "answer": True},
+    {"question": "Plants absorb oxygen from the atmosphere.", "answer": False},
+    {"question": "Charles Babbage is known as the father of computers.", "answer": True},
+    {"question": "Diamonds are the hardest natural substance on Earth.", "answer": True},
+    {"question": "The Atlantic Ocean is the largest ocean on Earth.", "answer": False},
+    {"question": "The currency of Japan is the Yen.", "answer": True},
+    {"question": "Spiders have six legs.", "answer": False},
+    {"question": "Water freezes at 0 degrees Celsius.", "answer": True},
+    {"question": "Isaac Newton discovered gravity.", "answer": True},
+    {"question": "Mount Everest is the tallest mountain in the world.", "answer": True}
+]

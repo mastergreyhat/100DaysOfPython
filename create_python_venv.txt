@@ -1,0 +1,7 @@
+sudo apt update
+sudo apt install python3-venv
+# Navigate to your project directory
+python3 -m venv .venv
+source .venv/bin/activate
+# to exit
+deactivate
